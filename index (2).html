@@ -1,0 +1,59 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wheel of Fortune</title>
+  <link rel="stylesheet" href="WheelofFortune.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+  // 0 = Lose a turn -1 = bannkrupt
+  var values = [0, 800, 350, 450,700,300,
+                 600,5000,600,500,300,500,
+                 800,550,400,300,900,500,
+                 300,900,-1,600,400,300];
+
+  $(document).ready(function() {
+    var degrees = 0;
+    $('.img').click(function rotateMe(e) {
+      genNumber();
+      degrees += 90;
+      $('.img').css({
+          'transform': 'rotate(' + degrees + 'deg)',
+          '-ms-transform': 'rotate(' + degrees + 'deg)',
+          '-moz-transform': 'rotate(' + degrees + 'deg)',
+          '-webkit-transform': 'rotate(' + degrees + 'deg)',
+          '-o-transform': 'rotate(' + degrees + 'deg)'
+        });
+      })
+    });
+
+  function genNumber()
+  {
+    var money = values[parseInt(values.length * Math.random())];
+    document.getElementById('spin').innerHTML = money;
+  }
+
+  function gss()
+  {
+    
+  }
+  </script>
+  </head>
+  <body>
+    <h1>Welcome to Wheel of Fortune!</h1>
+    <h3>Enter a Guess:</h3>
+    <div>
+      <input type="text" id="in" placeholder="Your guess goes here">
+      <button type="button" onclick="gss()">Submit</button>
+    <br>
+    <br>
+    <span>Your Spin: <span id="spin"></span></span>
+    <br>
+    <span id="total">Your Total: </span>
+    <br>
+    <span id="puzzle"></span>
+    <br>
+    <img class = 'img' src="wheel.png">
+    </div>
+  </body>
+</html>
